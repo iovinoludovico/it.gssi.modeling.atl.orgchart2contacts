@@ -1,0 +1,49 @@
+-- @path OrgchartMM=/it.intecs.modeling.orgchart/model/Orgchart.ecore
+-- @path ContactsMM=/it.gssi.modeling.atl.orgchart2contacts/metamodels/Contact.ecore
+
+module orgchart2HTML;
+create OUT : ContactsMM from IN : OrgchartMM;
+
+helper def : mainlist : ContactsMM!List = OclUndefined;
+
+
+
+rule OrgchartModel2ContactList{
+from s:OrgchartMM!orgchartModel
+to t: ContactsMM!ContactLists(
+lists <- s.president
+)
+
+}
+
+rule Company2List{
+from s:OrgchartMM!President
+to list:ContactsMM!List(
+name <- s.companyName,
+contacts <- s.subemployees
+),
+president_contact: ContactsMM!Contact(
+name <- s.name,
+address <- s.address,
+phone <- s.phone,
+list <- list
+)do {
+	thisModule.mainlist<-list;
+}
+
+}
+
+rule Member2Contact{
+from s:OrgchartMM!Member(not s.oclIsTypeOf(OrgchartMM!President))
+to t:ContactsMM!Contact(
+name <- s.name,
+address <- s.address,
+phone <- s.phone,
+list <- thisModule.mainlist
+)
+
+}
+
+
+
+

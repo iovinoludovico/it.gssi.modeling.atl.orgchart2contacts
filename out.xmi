@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<contacts:List
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:contacts="http://gssi.infn.it/contacts"
+    name="IBM">
+  <contacts
+      name="Fred Flinstones"
+      phone="+393838272733"
+      address="New York street 233"/>
+  <contacts
+      name="Michael Night"/>
+  <contacts
+      name="John Smith"
+      address="New York street 23"/>
+  <contacts
+      name="James Bond"/>
+  <contacts
+      name="Nick Kamen"/>
+  <contacts
+      name="Greg Nicholson"/>
+  <contacts
+      name="Kim Stone"/>
+</contacts:List>
